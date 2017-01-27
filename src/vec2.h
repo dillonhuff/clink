@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cmath>
+#include <iostream>
 
 namespace clink {
 
@@ -19,6 +20,10 @@ namespace clink {
       return vec2(c*x(), c*y());
     }
 
+    inline vec2 plus(const vec2 other) const {
+      return vec2(x() + other.x(), y() + other.y());
+    }
+
     inline vec2 minus(const vec2 other) {
       return vec2(x() - other.x(), y() - other.y());
     }
@@ -29,9 +34,11 @@ namespace clink {
 
     inline bool within_eps(const vec2 other, const double eps) {
       double dist = (this->minus(other)).len();
-      return (dist < eps) || (-1*dist < eps);
+      return fabs(dist) < eps;
     }
 
   };
+
+  std::ostream& operator<<(std::ostream& out, const vec2 vec);
 
 }

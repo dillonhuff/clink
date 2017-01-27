@@ -24,6 +24,12 @@ namespace clink {
       velocities.push_back(velocity);
     }
 
+    inline void set_position(const unsigned i, const vec2 pos) {
+      positions[i] = pos;
+    }
+
+    inline unsigned num_particles() const { return positions.size(); }
+
     inline vec2 particle_position(const unsigned i) { return positions[i]; }
     inline vec2 particle_velocity(const unsigned i) { return velocities[i]; }
 
